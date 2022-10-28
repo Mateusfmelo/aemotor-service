@@ -1,11 +1,8 @@
-from helpers.database import db
+class UF():
 
-class UF(db.Model):
-
-    def __init__(self, id, nome, sigla):
-        self.id = id
+    def __init__(self, nome, sigla):
         self.nome = nome
         self.sigla = sigla
 
     def __repr__(self):
-        return '<id: {} , Nome: {} , Sigla: {}>'.format(self.id, self.nome, self.sigla)
+        return '<Nome: {}, Sigla: {}>'.format(self.nome, self.sigla)

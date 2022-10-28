@@ -1,6 +1,4 @@
-from helpers.database import db
-
-class Rota(db.Model):
+class Rota():
 
     def __init__(self, nomeDestino, qtdAlunos, prefeitura, veiculo, passageiro, horaSaida, horaChegada):
         self.nomeDestino = nomeDestino
