@@ -1,3 +1,7 @@
+from flask import Flask
+from flask_restful import Api
+from flask_cors import CORS
+
 from model.aluno import Aluno
 from model.cidade import Cidade
 from model.endereco import Endereco
@@ -13,44 +17,56 @@ from model.rota import Rota
 from model.uf import UF
 from model.veiculo import Veiculo
 
-aluno = Aluno ("Mateus", "06/05/2001", "mateusmelo51@gmail.com", "4002-8922", "IFPB", "TSI", "67")
-print(aluno)
+from helpers.database import db, migrate
 
-cidade = Cidade ("Guarabira", "GBA")
-print(cidade)
+# CORS
+app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
-endereco = Endereco ("58200-000", "69", "Próximo a Guaraves", "Rua Antonio Galdino Guedes", "Lanchonete Mundial", "Rua Antonio Galdino Guedes")
-print(endereco)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:mateus@localhost:5432/aemotor'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-funcionario = Funcionario ("Déris", "15/07/1980", "deris@gmail.com", "98745-9831","Prefeitura Municipal de Guarabira", "Segurança")
-print(funcionario)
+db.init_app(app)
+migrate.init_app(app, db)
 
-gestorAPP = GestorAPP ("Gleidson")
-print(gestorAPP)
+#aluno = Aluno ("Mateus", "06/05/2001", "mateusmelo51@gmail.com", "4002-8922", "IFPB", "TSI", "67")
+#print(aluno)
 
-instituicaoDeEnsino = InstituicaoDeEnsino ("IFPB", "Rua Professor Carlos Leonardo Arcoverde", "98195-6465")
-print(instituicaoDeEnsino)
+#cidade = Cidade ("Guarabira", "GBA")
+#print(cidade)
 
-motorista = Motorista ("Erick", "15/07/1980", "erick@gmail.com", "98745-9831","Prefeitura Municipal de Solânea", "Motorista","Solânea, Bananeiras, Belém, Pirpirituba e Guarabira")
-print(motorista)
+#endereco = Endereco ("58200-000", "69", "Próximo a Guaraves", "Rua Antonio Galdino Guedes", "Lanchonete Mundial", "Rua Antonio Galdino Guedes")
+#print(endereco)
 
-passageiro = Passageiro ("Mateus", "06/05/2001", "mateusmelo51@gmail.com", "4002-8922", "IFPB", "67", "TSI", "João Pessoa", "Guarabira")
-print(passageiro)
+#funcionario = Funcionario ("Déris", "15/07/1980", "deris@gmail.com", "98745-9831","Prefeitura Municipal de Guarabira", "Segurança")
+#print(funcionario)
 
-pessoa = Pessoa ("Mateus", "06/05/2001", "mateusmelo51@gmail.com", "4002-8922")
-print(pessoa)
+#gestorAPP = GestorAPP ("Gleidson")
+#print(gestorAPP)
 
-prefeito = Prefeito ("Marcus Diogo de Lima", "18/11/1964", "marcus@gmail.com", "3271-1946")
-print(prefeito)
+#instituicaoDeEnsino = InstituicaoDeEnsino ("IFPB", "Rua Professor Carlos Leonardo Arcoverde", "98195-6465")
+#print(instituicaoDeEnsino)
 
-prefeitura = Prefeitura ("Félix", "felix@gmail.com", "99845-7896", "Marcus Diogo de Lima")
-print(prefeitura)
+#motorista = Motorista ("Erick", "15/07/1980", "erick@gmail.com", "98745-9831","Prefeitura Municipal de Solânea", "Motorista","Solânea, Bananeiras, Belém, Pirpirituba e Guarabira")
+#print(motorista)
 
-rota = Rota ("Guarabira", "29", "Prefeitura Municipal de Solânea", "Ônibus", "Mateus", "12:40", "13:30")
-print(rota)
+#passageiro = Passageiro ("Mateus", "06/05/2001", "mateusmelo51@gmail.com", "4002-8922", "IFPB", "67", "TSI", "João Pessoa", "Guarabira")
+#print(passageiro)
 
-uf = UF ("Paraíba", "PB")
-print(uf)
+#pessoa = Pessoa ("Mateus", "06/05/2001", "mateusmelo51@gmail.com", "4002-8922")
+#print(pessoa)
 
-veiculo = Veiculo ("Solânea", "29", "Ônibus", "XRE-300")
-print(veiculo)
+#prefeito = Prefeito ("Marcus Diogo de Lima", "18/11/1964", "marcus@gmail.com", "3271-1946")
+#print(prefeito)
+
+#prefeitura = Prefeitura ("Félix", "felix@gmail.com", "99845-7896", "Marcus Diogo de Lima")
+#print(prefeitura)
+
+#rota = Rota ("Guarabira", "29", "Prefeitura Municipal de Solânea", "Ônibus", "Mateus", "12:40", "13:30")
+#print(rota)
+
+#uf = UF ("Paraíba", "PB")
+#print(uf)
+
+#veiculo = Veiculo ("Solânea", "29", "Ônibus", "XRE-300")
+#print(veiculo)
