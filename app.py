@@ -2,15 +2,16 @@ from flask import Flask
 from flask_restful import Api
 from flask_cors import CORS
 
-from model.aluno import Aluno
-from model.cidade import Cidade
 from model.endereco import Endereco
+from model.pessoa import Pessoa
+from model.aluno import Aluno
 from model.funcionario import Funcionario
 from model.gestorAPP import GestorAPP
 from model.instituicaoDeEnsino import InstituicaoDeEnsino
 from model.motorista import Motorista
 from model.passageiro import Passageiro
 from model.pessoa import Pessoa
+from model.cidade import Cidade
 from model.prefeito import Prefeito
 from model.prefeitura import Prefeitura
 from model.rota import Rota

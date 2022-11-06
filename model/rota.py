@@ -2,7 +2,7 @@ from helpers.database import db
 
 class Rota(db.Model):
     
-    __tablename__ = 'tb_Rota'
+    __tablename__ = 'tb_rota'
 
     id = db.Column(db.Integer, primary_key=True)
     nomeDestino = db.Column(db.String(200), nullable=False)

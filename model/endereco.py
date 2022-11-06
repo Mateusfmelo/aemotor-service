@@ -2,9 +2,8 @@ from helpers.database import db
 
 class Endereco(db.Model):
     
-    __tablename__ = "tb_funcionario"
-    __mapper_args__ = {'polymorphic_identity': 'funcionario', 'concrete': True}
-    
+    __tablename__ = "tb_endereco"
+
     id = db.Column(db.Integer, primary_key=True)
     cep = db.Column(db.String(10), nullable=False)
     complemento = db.Column(db.String(30), nullable=False)

@@ -9,11 +9,10 @@ class Prefeitura(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     secretarios=db.Column(db.String(120), nullable=False)
     telefone=db.Column(db.String(120), nullable=False)
-    rota_id = db.Column(db.Integer, db.ForeignKey("tb_Rota.id"))
+    rota_id = db.Column(db.Integer, db.ForeignKey("tb_rota.id"))
     
     prefeito_child = db.relationship("Prefeito_db", uselist=False)
     cidade_parent = db.Column(db.Integer, db.ForeignKey("tb_cidade.id"))
-    rota_parent = db.Column(db.Integer, db.ForeignKey("tb_Rota.id"))
     gestores = db.relationship('GestorApp_db', backref='GestorApp_db', lazy=True)
     funcionarios = db.relationship('Funcionario_db', backref='Funcionario_db', lazy=True)
 
